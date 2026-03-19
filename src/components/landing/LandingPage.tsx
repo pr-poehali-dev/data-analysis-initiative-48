@@ -43,21 +43,42 @@ export default function LandingPage() {
 
   return (
     <Layout>
+      {/* Логотип / название компании */}
+      <div className="fixed top-0 left-0 z-30 p-6 md:p-8">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col"
+        >
+          <span className="text-white font-bold text-lg md:text-xl tracking-wide leading-tight">
+            Азия Интер Групп ДВ
+          </span>
+          <span className="text-[#1E90FF] text-xs md:text-sm tracking-widest uppercase mt-0.5">
+            Международная логистика
+          </span>
+        </motion.div>
+      </div>
+
+      {/* Навигация по точкам */}
       <nav className="fixed top-0 right-0 h-screen flex flex-col justify-center z-30 p-4">
         {sections.map((section, index) => (
           <button
             key={section.id}
             className={`w-3 h-3 rounded-full my-2 transition-all ${
-              index === activeSection ? 'bg-white scale-150' : 'bg-gray-600'
+              index === activeSection ? 'bg-[#1E90FF] scale-150' : 'bg-gray-600'
             }`}
             onClick={() => handleNavClick(index)}
           />
         ))}
       </nav>
+
+      {/* Прогресс-бар */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-0.5 bg-white origin-left z-30"
+        className="fixed top-0 left-0 right-0 h-0.5 bg-[#1E90FF] origin-left z-30"
         style={{ scaleX }}
       />
+
       <div
         ref={containerRef}
         className="h-full overflow-y-auto snap-y snap-mandatory"
